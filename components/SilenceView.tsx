@@ -10,7 +10,7 @@ interface SectionProps {
   title: string;
   description: string;
   icon: React.ReactNode;
-  children: React.ReactNode;
+  children?: React.ReactNode; // Made optional
   themeColor: string;
 }
 
@@ -125,47 +125,47 @@ const ImposterQuiz: React.FC = () => {
   );
 };
 
-const Section: React.FC<SectionProps> = ({ title, description, icon, children, themeColor }) => (
-  <motion.section
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-10%" }}
-    transition={{ duration: 0.8, ease: "easeOut" }}
-    className="w-full max-w-7xl mx-auto py-24 px-6 md:px-12 border-b border-stone-200 last:border-0"
-  >
-    <div className="flex flex-col lg:flex-row gap-16 items-start">
-      {/* Sticky Sidebar Info */}
-      <div className="lg:w-1/3 lg:sticky lg:top-32">
-        <motion.div 
-          className={`mb-6 p-3 rounded-2xl w-fit ${themeColor} bg-opacity-10`}
-          whileHover={{ scale: 1.05 }}
-        >
-          {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: `w-8 h-8 ${themeColor}` })}
-        </motion.div>
-        <h2 className="font-serif text-4xl md:text-5xl text-slate-900 mb-6 leading-tight">{title}</h2>
-        <p className="font-sans text-slate-600 leading-relaxed text-lg">{description}</p>
-        <div className={`h-1 w-20 mt-8 rounded-full ${themeColor} opacity-40`} />
-      </div>
+// UPDATED SECTION COMPONENT
+// Automatically centers layout if there are no children (no cards/content)
+const Section: React.FC<SectionProps> = ({ title, description, icon, children, themeColor }) => {
+  const hasChildren = React.Children.count(children) > 0;
 
-      {/* Content Grid */}
-      <div className="lg:w-2/3 w-full">
-        {children}
-      </div>
-    </div>
-  </motion.section>
-);
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`w-full max-w-7xl mx-auto py-24 px-6 md:px-12 border-b border-stone-200 last:border-0 ${!hasChildren ? 'text-center' : ''}`}
+    >
+      <div className={`flex flex-col ${hasChildren ? 'lg:flex-row gap-16 items-start' : 'items-center max-w-3xl mx-auto'}`}>
+        
+        {/* Title/Desc Area */}
+        <div className={hasChildren ? 'lg:w-1/3 lg:sticky lg:top-32' : 'w-full'}>
+          <motion.div 
+            className={`mb-6 p-3 rounded-2xl w-fit ${themeColor} bg-opacity-10 ${!hasChildren ? 'mx-auto' : ''}`}
+            whileHover={{ scale: 1.05 }}
+          >
+            {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: `w-8 h-8 ${themeColor}` })}
+          </motion.div>
+          
+          <h2 className="font-serif text-4xl md:text-5xl text-slate-900 mb-6 leading-tight">{title}</h2>
+          <p className="font-sans text-slate-600 leading-relaxed text-lg">{description}</p>
+          
+          {/* Decorative Line */}
+          <div className={`h-1 w-20 mt-8 rounded-full ${themeColor} opacity-40 ${!hasChildren ? 'mx-auto' : ''}`} />
+        </div>
 
-// New clean card component replacing the Instagram placeholder
-const ConceptCard: React.FC<{ label: string }> = ({ label }) => (
-  <motion.div 
-    whileHover={{ y: -5, boxShadow: "0 10px 30px -10px rgba(0,0,0,0.1)" }}
-    className="bg-white p-8 rounded-xl shadow-sm border border-stone-100 flex items-center justify-center text-center h-full min-h-[140px] group transition-all duration-300"
-  >
-    <span className="font-serif text-xl text-slate-700 group-hover:text-slate-900 transition-colors">
-      {label}
-    </span>
-  </motion.div>
-);
+        {/* Content Area (Only renders if children exist) */}
+        {hasChildren && (
+          <div className="lg:w-2/3 w-full">
+            {children}
+          </div>
+        )}
+      </div>
+    </motion.section>
+  );
+};
 
 export const SilenceView: React.FC<SilenceViewProps> = ({ onReset }) => {
   return (
@@ -208,43 +208,30 @@ export const SilenceView: React.FC<SilenceViewProps> = ({ onReset }) => {
 
       <div className="bg-[#F5F2E8] pb-40">
         
-        {/* Risk Factors Section */}
+        {/* Risk Factors Section - No Cards */}
         <Section 
           title="Risk Factors" 
           description="Identify the triggers. Certain situations—new roles, toxic environments, or perfectionist tendencies—act as accelerants for imposter feelings."
           icon={<AlertCircle />}
           themeColor="text-amber-700 bg-amber-500"
-        >
-           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-             <ConceptCard label="Perfectionism" />
-             <ConceptCard label="Comparison Trap" />
-             <ConceptCard label="Fear of Failure" />
-           </div>
-        </Section>
+        />
 
-        {/* Protective Factors Section */}
+        {/* Protective Factors Section - No Cards */}
         <Section 
           title="Protective Factors" 
           description="These are your shields. Protective factors are the internal mindsets and external environments that buffer against the shadows of self-doubt."
           icon={<Shield />}
           themeColor="text-emerald-700 bg-emerald-500"
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-             <ConceptCard label="Building a Support System" />
-             <ConceptCard label="Documenting Wins" />
-             <ConceptCard label="The Growth Mindset" />
-             <ConceptCard label="Positive Affirmations" />
-          </div>
-        </Section>
+        />
 
-        {/* Community Interaction Section */}
+        {/* Community Interaction Section - Keeps Quiz */}
         <Section 
           title="Community" 
           description="You are not alone. Assessing your own feelings is the first step towards connecting with others who share this experience."
           icon={<Heart />}
           themeColor="text-rose-700 bg-rose-500"
         >
-           {/* Center the Quiz now that the image is gone */}
+           {/* Center the Quiz */}
            <div className="max-w-2xl mx-auto">
              <ImposterQuiz />
            </div>
