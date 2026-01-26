@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { RefreshCw, Shield, AlertCircle, Heart, Instagram, ArrowDown, ArrowRight, CheckCircle2 } from 'lucide-react';
+import risk1 from '/riskfactor_1.png?url';
+import risk2 from '/riskfactor_2.png?url';
+import risk3 from '/riskfactor_3.png?url';
+import protect1 from '/protectivefactor_1.png?url';
+import protect2 from '/protectivefactor_2.png?url';
+import protect3 from '/protectivefactor_3.png?url';
+import protect4 from '/protectivefactor_4.png?url';
+import comm1 from '/community_1.jpg?url';
 
 interface SilenceViewProps {
   onReset: (e: React.MouseEvent) => void;
