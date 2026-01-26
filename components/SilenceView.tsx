@@ -251,9 +251,10 @@ export const SilenceView: React.FC<SilenceViewProps> = ({ onReset }) => {
           themeColor="text-amber-700 bg-amber-500"
         >
            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-             <InstagramPlaceholder caption="Perfectionism" imageSrc="riskfactor_1.png" />
-             <InstagramPlaceholder caption="Comparison Trap" imageSrc="riskfactor_2.png" />
-             <InstagramPlaceholder caption="Fear of Failure" imageSrc="riskfactor_3.png" />
+             {/* UPDATED: Added / to start of imageSrc */}
+             <InstagramPlaceholder caption="Perfectionism" imageSrc="/riskfactor_1.png" />
+             <InstagramPlaceholder caption="Comparison Trap" imageSrc="/riskfactor_2.png" />
+             <InstagramPlaceholder caption="Fear of Failure" imageSrc="/riskfactor_3.png" />
            </div>
         </Section>
 
@@ -265,10 +266,11 @@ export const SilenceView: React.FC<SilenceViewProps> = ({ onReset }) => {
           themeColor="text-emerald-700 bg-emerald-500"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-             <InstagramPlaceholder caption="Building a Support System" imageSrc="protectivefactor_1.png" />
-             <InstagramPlaceholder caption="Documenting Wins" imageSrc="protectivefactor_2.png" />
-             <InstagramPlaceholder caption="The Growth Mindset" imageSrc="protectivefactor_3.png" />
-             <InstagramPlaceholder caption="Positive Affirmations" imageSrc="protectivefactor_4.png" />
+             {/* UPDATED: Added / to start of imageSrc */}
+             <InstagramPlaceholder caption="Building a Support System" imageSrc="/protectivefactor_1.png" />
+             <InstagramPlaceholder caption="Documenting Wins" imageSrc="/protectivefactor_2.png" />
+             <InstagramPlaceholder caption="The Growth Mindset" imageSrc="/protectivefactor_3.png" />
+             <InstagramPlaceholder caption="Positive Affirmations" imageSrc="/protectivefactor_4.png" />
           </div>
         </Section>
 
@@ -281,7 +283,8 @@ export const SilenceView: React.FC<SilenceViewProps> = ({ onReset }) => {
         >
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
              <ImposterQuiz />
-             <InstagramPlaceholder caption="Shared Vulnerability" imageSrc="community_1.jpg" />
+             {/* UPDATED: Added / to start of imageSrc */}
+             <InstagramPlaceholder caption="Shared Vulnerability" imageSrc="/community_1.jpg" />
            </div>
         </Section>
 
