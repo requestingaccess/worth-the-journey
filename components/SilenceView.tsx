@@ -260,9 +260,9 @@ export const SilenceView: React.FC<SilenceViewProps> = ({ onReset }) => {
         >
            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
              {/* UPDATED: Added / to start of imageSrc */}
-             <InstagramPlaceholder caption="Perfectionism" imageSrc="/riskfactor_1.png" />
-             <InstagramPlaceholder caption="Comparison Trap" imageSrc="/riskfactor_2.png" />
-             <InstagramPlaceholder caption="Fear of Failure" imageSrc="/riskfactor_3.png" />
+             <InstagramPlaceholder caption="Perfectionism" imageSrc={risk1} />
+             <InstagramPlaceholder caption="Comparison Trap" imageSrc={risk2} />
+             <InstagramPlaceholder caption="Fear of Failure" imageSrc={risk3} />
            </div>
         </Section>
 
@@ -275,10 +275,10 @@ export const SilenceView: React.FC<SilenceViewProps> = ({ onReset }) => {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
              {/* UPDATED: Added / to start of imageSrc */}
-             <InstagramPlaceholder caption="Building a Support System" imageSrc="/protectivefactor_1.png" />
-             <InstagramPlaceholder caption="Documenting Wins" imageSrc="/protectivefactor_2.png" />
-             <InstagramPlaceholder caption="The Growth Mindset" imageSrc="/protectivefactor_3.png" />
-             <InstagramPlaceholder caption="Positive Affirmations" imageSrc="/protectivefactor_4.png" />
+             <InstagramPlaceholder caption="Building a Support System" imageSrc={protect1} />
+            <InstagramPlaceholder caption="Documenting Wins" imageSrc={protect2} />
+            <InstagramPlaceholder caption="The Growth Mindset" imageSrc={protect3} />
+            <InstagramPlaceholder caption="Positive Affirmations" imageSrc={protect4} />
           </div>
         </Section>
 
@@ -292,7 +292,7 @@ export const SilenceView: React.FC<SilenceViewProps> = ({ onReset }) => {
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
              <ImposterQuiz />
              {/* UPDATED: Added / to start of imageSrc */}
-             <InstagramPlaceholder caption="Shared Vulnerability" imageSrc="/community_1.jpg" />
+             <InstagramPlaceholder caption="Shared Vulnerability" imageSrc={comm1} />
            </div>
         </Section>
 
