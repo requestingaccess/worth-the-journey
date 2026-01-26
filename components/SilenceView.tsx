@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { RefreshCw, Shield, AlertCircle, Heart, Instagram, ArrowDown, ArrowRight, CheckCircle2 } from 'lucide-react';
-import risk1 from '/riskfactor_1.png?url';
-import risk2 from '/riskfactor_2.png?url';
-import risk3 from '/riskfactor_3.png?url';
-import protect1 from '/protectivefactor_1.png?url';
-import protect2 from '/protectivefactor_2.png?url';
-import protect3 from '/protectivefactor_3.png?url';
-import protect4 from '/protectivefactor_4.png?url';
-import comm1 from '/community_1.jpg?url';
+import { RefreshCw, Shield, AlertCircle, Heart, ArrowDown, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface SilenceViewProps {
   onReset: (e: React.MouseEvent) => void;
@@ -58,22 +50,22 @@ const ImposterQuiz: React.FC = () => {
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white p-6 rounded-2xl shadow-lg border border-rose-100 text-center relative overflow-hidden h-full flex flex-col justify-center"
+        className="bg-white p-8 rounded-2xl shadow-lg border border-rose-100 text-center relative overflow-hidden h-full flex flex-col justify-center min-h-[400px]"
       >
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rose-400 to-rose-600" />
         
-        <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-rose-50 text-rose-600 mx-auto">
-           <CheckCircle2 className="w-6 h-6" />
+        <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-full bg-rose-50 text-rose-600 mx-auto">
+           <CheckCircle2 className="w-8 h-8" />
         </div>
 
-        <h3 className="font-serif text-2xl text-slate-900 mb-2">{result.label}</h3>
-        <p className="font-sans text-stone-600 mb-6 text-sm leading-relaxed">{result.text}</p>
+        <h3 className="font-serif text-3xl text-slate-900 mb-4">{result.label}</h3>
+        <p className="font-sans text-stone-600 mb-8 text-base leading-relaxed max-w-md mx-auto">{result.text}</p>
         
-        <div className="bg-amber-50 p-3 rounded-lg mb-6 text-left border border-amber-100">
-             <p className="text-amber-800 text-xs font-bold uppercase tracking-wider mb-1 flex items-center gap-2">
-                <AlertCircle className="w-3 h-3" /> Disclaimer
+        <div className="bg-amber-50 p-4 rounded-lg mb-8 text-left border border-amber-100 max-w-md mx-auto w-full">
+             <p className="text-amber-800 text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+                <AlertCircle className="w-4 h-4" /> Disclaimer
              </p>
-             <p className="text-amber-700/80 text-[10px] leading-relaxed">
+             <p className="text-amber-700/80 text-xs leading-relaxed">
                 This assessment is for self-reflection only. It is not a clinical diagnosis or a substitute for professional mental health advice.
              </p>
         </div>
@@ -90,7 +82,7 @@ const ImposterQuiz: React.FC = () => {
         
         <button 
             onClick={() => { setIndex(0); setScore(0); setFinished(false); }}
-            className="block mx-auto mt-6 text-stone-400 hover:text-stone-600 text-[10px] uppercase tracking-widest transition-colors"
+            className="block mx-auto mt-8 text-stone-400 hover:text-stone-600 text-[10px] uppercase tracking-widest transition-colors"
         >
             Retake Assessment
         </button>
@@ -99,32 +91,32 @@ const ImposterQuiz: React.FC = () => {
   }
 
   return (
-    <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-stone-200 relative h-full flex flex-col">
-      <div className="flex justify-between items-center mb-6">
-        <span className="text-[10px] font-bold tracking-widest text-stone-400 uppercase">Risk Assessment</span>
-        <div className="flex gap-1">
+    <div className="bg-white p-8 md:p-12 rounded-2xl shadow-lg border border-stone-200 relative h-full flex flex-col min-h-[400px]">
+      <div className="flex justify-between items-center mb-8">
+        <span className="text-xs font-bold tracking-widest text-stone-400 uppercase">Risk Assessment</span>
+        <div className="flex gap-2">
           {QUIZ_QUESTIONS.map((_, i) => (
-             <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i <= index ? 'w-4 bg-rose-500' : 'w-1.5 bg-stone-100'}`} />
+             <div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i <= index ? 'w-6 bg-rose-500' : 'w-2 bg-stone-100'}`} />
           ))}
         </div>
       </div>
       
-      <div className="flex-grow flex items-center mb-8">
-        <h3 className="font-serif text-xl text-slate-900 leading-snug">
+      <div className="flex-grow flex items-center justify-center mb-10">
+        <h3 className="font-serif text-2xl md:text-3xl text-slate-900 leading-snug text-center">
           {QUIZ_QUESTIONS[index]}
         </h3>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 mt-auto">
+      <div className="grid grid-cols-2 gap-4 mt-auto">
         <button 
           onClick={() => handleAnswer(false)}
-          className="py-3 px-4 rounded-xl border border-stone-100 hover:border-stone-300 hover:bg-stone-50 text-stone-500 font-sans text-sm font-semibold transition-all"
+          className="py-4 px-6 rounded-xl border border-stone-100 hover:border-stone-300 hover:bg-stone-50 text-stone-500 font-sans text-base font-semibold transition-all"
         >
           No
         </button>
         <button 
           onClick={() => handleAnswer(true)}
-          className="py-3 px-4 rounded-xl bg-slate-900 text-white font-sans text-sm font-semibold shadow-md hover:bg-rose-600 transition-all"
+          className="py-4 px-6 rounded-xl bg-slate-900 text-white font-sans text-base font-semibold shadow-md hover:bg-rose-600 transition-all"
         >
           Yes
         </button>
@@ -137,7 +129,7 @@ const Section: React.FC<SectionProps> = ({ title, description, icon, children, t
   <motion.section
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-15%" }}
+    viewport={{ once: true, margin: "-10%" }}
     transition={{ duration: 0.8, ease: "easeOut" }}
     className="w-full max-w-7xl mx-auto py-24 px-6 md:px-12 border-b border-stone-200 last:border-0"
   >
@@ -163,50 +155,15 @@ const Section: React.FC<SectionProps> = ({ title, description, icon, children, t
   </motion.section>
 );
 
-const InstagramPlaceholder: React.FC<{ caption?: string, aspectRatio?: string, imageSrc?: string }> = ({ caption, aspectRatio = "aspect-[4/5]", imageSrc }) => (
+// New clean card component replacing the Instagram placeholder
+const ConceptCard: React.FC<{ label: string }> = ({ label }) => (
   <motion.div 
-    whileHover={{ y: -8 }}
-    transition={{ type: "spring", stiffness: 300 }}
-    className="bg-white p-4 shadow-sm border border-stone-100 rounded-lg group cursor-pointer hover:shadow-xl transition-shadow duration-300 h-full"
+    whileHover={{ y: -5, boxShadow: "0 10px 30px -10px rgba(0,0,0,0.1)" }}
+    className="bg-white p-8 rounded-xl shadow-sm border border-stone-100 flex items-center justify-center text-center h-full min-h-[140px] group transition-all duration-300"
   >
-    <div className={`${aspectRatio} bg-stone-100 mb-4 rounded-md flex items-center justify-center relative overflow-hidden`}>
-      {imageSrc ? (
-        <img 
-          src={imageSrc} 
-          alt={caption} 
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-      ) : (
-        <Instagram className="w-10 h-10 text-stone-300 group-hover:scale-110 transition-transform duration-500" />
-      )}
-      
-      {/* Overlay for depth on hover */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-      
-      {/* Fake UI Elements for realism */}
-      <div className="absolute top-3 right-3 flex gap-1 z-10">
-        <div className={`w-1.5 h-1.5 rounded-full drop-shadow-sm ${imageSrc ? 'bg-white' : 'bg-stone-300'}`} />
-        <div className={`w-1.5 h-1.5 rounded-full drop-shadow-sm ${imageSrc ? 'bg-white' : 'bg-stone-300'}`} />
-        <div className={`w-1.5 h-1.5 rounded-full drop-shadow-sm ${imageSrc ? 'bg-white' : 'bg-stone-300'}`} />
-      </div>
-    </div>
-    
-    <div className="space-y-3 px-1">
-      <div className="flex items-center justify-between mb-2">
-         <div className="flex gap-2">
-            <Heart className={`w-4 h-4 transition-colors ${imageSrc ? 'text-rose-500 fill-rose-500' : 'text-stone-300'}`} />
-            <div className="w-4 h-4 rounded-full border border-stone-300" />
-         </div>
-         <div className="w-4 h-4 border border-stone-300 rounded-sm" />
-      </div>
-      <div className="h-2 w-3/4 bg-stone-100 rounded" />
-      <div className="h-2 w-1/2 bg-stone-100 rounded" />
-    </div>
-    {caption && (
-      <p className="mt-4 text-xs font-mono text-stone-400 uppercase tracking-widest border-t border-stone-50 pt-3">
-        {caption}
-      </p>
-    )}
+    <span className="font-serif text-xl text-slate-700 group-hover:text-slate-900 transition-colors">
+      {label}
+    </span>
   </motion.div>
 );
 
@@ -258,11 +215,10 @@ export const SilenceView: React.FC<SilenceViewProps> = ({ onReset }) => {
           icon={<AlertCircle />}
           themeColor="text-amber-700 bg-amber-500"
         >
-           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-             {/* UPDATED: Added / to start of imageSrc */}
-             <InstagramPlaceholder caption="Perfectionism" imageSrc={risk1} />
-             <InstagramPlaceholder caption="Comparison Trap" imageSrc={risk2} />
-             <InstagramPlaceholder caption="Fear of Failure" imageSrc={risk3} />
+           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+             <ConceptCard label="Perfectionism" />
+             <ConceptCard label="Comparison Trap" />
+             <ConceptCard label="Fear of Failure" />
            </div>
         </Section>
 
@@ -273,12 +229,11 @@ export const SilenceView: React.FC<SilenceViewProps> = ({ onReset }) => {
           icon={<Shield />}
           themeColor="text-emerald-700 bg-emerald-500"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-             {/* UPDATED: Added / to start of imageSrc */}
-             <InstagramPlaceholder caption="Building a Support System" imageSrc={protect1} />
-            <InstagramPlaceholder caption="Documenting Wins" imageSrc={protect2} />
-            <InstagramPlaceholder caption="The Growth Mindset" imageSrc={protect3} />
-            <InstagramPlaceholder caption="Positive Affirmations" imageSrc={protect4} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+             <ConceptCard label="Building a Support System" />
+             <ConceptCard label="Documenting Wins" />
+             <ConceptCard label="The Growth Mindset" />
+             <ConceptCard label="Positive Affirmations" />
           </div>
         </Section>
 
@@ -289,10 +244,9 @@ export const SilenceView: React.FC<SilenceViewProps> = ({ onReset }) => {
           icon={<Heart />}
           themeColor="text-rose-700 bg-rose-500"
         >
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+           {/* Center the Quiz now that the image is gone */}
+           <div className="max-w-2xl mx-auto">
              <ImposterQuiz />
-             {/* UPDATED: Added / to start of imageSrc */}
-             <InstagramPlaceholder caption="Shared Vulnerability" imageSrc={comm1} />
            </div>
         </Section>
 
